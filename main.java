@@ -147,6 +147,8 @@ class hospitalmanagement{
                 showtotal.showpatients();
                 break;
             case 3:
+                appointments addAppointments=new appointments();
+                addAppointments.addappointment();
                 break;
             case 4:
                 break;
