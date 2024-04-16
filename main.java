@@ -28,6 +28,34 @@ class patients{
         }
        }
     }
+
+    void addpatient(){
+        Scanner sc= new Scanner(System.in);
+        try {
+            String file="patients.csv";
+            FileWriter writer = new FileWriter(file, true); // Open in append mode
+            System.out.print("Enter Patient Id : ");
+            int id = sc.nextInt();
+            sc.nextLine(); // Consume newline character
+            System.out.print("Enter Patient Name : ");
+            String name = sc.nextLine();
+            System.out.print("Enter Patient Age : ");
+            int age = sc.nextInt();
+            sc.nextLine(); // Consume newline character
+            System.out.print("Enter Patient Mobile Number : ");
+            String mobile = sc.nextLine();
+            
+            String str = String.format("%d,%s,%d,%s%n", id, name, age, mobile);
+            writer.append(str);
+    
+            System.out.println("Data Added Successfully");
+            writer.close(); // Close the FileWriter
+            
+        } catch (Exception e) {
+            System.out.println("Some Error Occurred : " + e);
+        }
+    }
+    
 }
 class hospitalmanagement{
 
@@ -42,12 +70,14 @@ class hospitalmanagement{
         System.out.println("4. Create New Appointment");
         System.out.println("5. See All Appointments");
         System.out.println("6. Search Patient");
+        System.out.println("7. Exit");
         System.out.print("Enter Your choice: ");
         int no=sc.nextInt();
 
         switch (no) {
             case 1:
-                
+                patients addpatients=new patients();
+                addpatients.addpatient();
                 break;
             case 2:
                 break;
@@ -61,14 +91,21 @@ class hospitalmanagement{
                 break;
             case 6:
                 break;
-        
+            case 7:
+                System.exit(1);
             default:
+                System.out.println("Invalid Choice...");
                 break;
         }
     }
     catch(Exception e){
-        System.out.println("Error Occured....");
+        System.out.println("Error Occured...."+e);
     }
+    
     }
+   
+
+   
 }
+
 }
