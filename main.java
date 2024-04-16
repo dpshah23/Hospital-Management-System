@@ -99,7 +99,7 @@ class appointments{
             String file="appointments.csv";
             FileWriter writer = new FileWriter(file, true); 
             System.out.print("Enter Patient Id : ");
-            int id = sc.nextInt();
+            String id = sc.nextLine();
             sc.nextLine(); // Consume newline character
             System.out.print("Enter Patient Name : ");
             String name = sc.nextLine();
@@ -109,7 +109,7 @@ class appointments{
             System.out.print("Enter Appointment Type: ");
             String type=sc.nextLine();
     
-            String str = String.format("%d,%s,%d,%s%n", id, name, age, type);
+            String str = String.format("%s,%s,%d,%s%n", id, name, age, type);
             writer.append(str);
     
             System.out.println("Appointment Created Successfully");
@@ -168,6 +168,7 @@ class searchappointments{
                 this.searchbyname();
                 break;
             case 2:
+                this.searchbyid();
                 break;
             case 3:
                 break;
@@ -188,7 +189,7 @@ class searchappointments{
         BufferedReader reader = null;
         String line = "";
         try {
-            System.out.println("id        name      age       mobile");
+            System.out.println("id        name      age       type");
             System.out.println();
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
@@ -213,7 +214,45 @@ class searchappointments{
         }
     
     }
-}
+    void searchbyid()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter ID To Search : ");
+        String no = sc.nextLine();
+        String file = "appointments.csv";
+        BufferedReader reader = null;
+        String line = "";
+        try {
+            System.out.println("id        name      age       mobile");
+            System.out.println();
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+               
+                if (row.length >= 2 && row[0].equals(no)) { 
+                        for (String index : row) {
+                            System.out.printf("%-10s", index);
+                    }
+                    System.out.println();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Occurred: " + e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    
+    }
+
+    }
+
+
 class hospitalmanagement{
 
     public static void main(String[] args) {
