@@ -106,9 +106,9 @@ class appointments{
             System.out.print("Enter Patient Age : ");
             int age = sc.nextInt();
             sc.nextLine(); 
-            System.out.println("Enter Appointment Type: ");
+            System.out.print("Enter Appointment Type: ");
             String type=sc.nextLine();
-            sc.nextLine();
+    
             String str = String.format("%d,%s,%d,%s%n", id, name, age, type);
             writer.append(str);
     
@@ -118,6 +118,35 @@ class appointments{
         } catch (Exception e) {
             System.out.println("Some Error Occurred : " + e);
         }
+
+    }
+
+    void seeallappointments(){
+
+        String file="appointments.csv";
+        BufferedReader reader=null;
+        String line="";
+        try {
+            reader=new BufferedReader(new FileReader(file));
+            while((line=reader.readLine()) !=null){
+                String[] row=line.split(",");
+                for (String index : row) {
+                    System.out.printf("%-10s",index);
+                }
+                System.out.println();
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error Occured...");
+        }
+       finally{
+        try {
+            reader.close();
+        } catch (IOException e) {
+           
+            e.printStackTrace();
+        }
+       }
 
     }
 }
@@ -133,7 +162,8 @@ class hospitalmanagement{
         System.out.println("3. Create New Appointment");
         System.out.println("4. See All Appointments");
         System.out.println("5. Search Patient");
-        System.out.println("6. Exit");
+        System.out.println("6. Search Appointments");
+        System.out.println("7. Exit");
         System.out.print("Enter Your choice: ");
         int no=sc.nextInt();
 
@@ -151,12 +181,16 @@ class hospitalmanagement{
                 addAppointments.addappointment();
                 break;
             case 4:
+                appointments seeall=new appointments();
+                seeall.seeallappointments();
                 break;
             case 5:
                 patients seach=new patients();
                 seach.search();
                 break;
             case 6:
+                break;
+            case 7:
                 System.exit(1);
             default:
                 System.out.println("Invalid Choice...");
