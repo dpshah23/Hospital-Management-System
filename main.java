@@ -51,8 +51,13 @@ class patients{
             System.out.println("Data Added Successfully");
             writer.close(); // Close the FileWriter
             
-        } catch (Exception e) {
+        } catch (Exception e)
+         {
             System.out.println("Some Error Occurred : " + e);
+        }
+        finally
+        {
+            sc.close();
         }
     }
 
@@ -82,6 +87,7 @@ class patients{
             try {
                 if (reader != null) {
                     reader.close();
+                    sc.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -117,6 +123,9 @@ class appointments{
             
         } catch (Exception e) {
             System.out.println("Some Error Occurred : " + e);
+        }
+        finally{
+            sc.close();
         }
 
     }
@@ -155,12 +164,12 @@ class searchappointments{
     void redirect()
     {   
         Scanner sc=new Scanner(System.in);
-
+        try{
         System.out.println("Search Appointments");
         System.out.println("1. Search By Name ");
         System.out.println("2. Search By ID");
         System.out.println("3. Search By Appointment Type");
-
+        System.out.print("Enter Choice: ");
         int choice=sc.nextInt();
 
         switch (choice) {
@@ -171,12 +180,19 @@ class searchappointments{
                 this.searchbyid();
                 break;
             case 3:
+                this.searchbytype();
                 break;
             default:
                 System.out.println("Invalid Choice");
                 break;
         }
+    }
+    catch(Exception e){
 
+    }
+    finally{
+        sc.close();
+    }
 
     }
 
@@ -207,6 +223,7 @@ class searchappointments{
             try {
                 if (reader != null) {
                     reader.close();
+                    sc.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -223,7 +240,7 @@ class searchappointments{
         BufferedReader reader = null;
         String line = "";
         try {
-            System.out.println("id        name      age       mobile");
+            System.out.println("id        name      age       type");
             System.out.println();
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
@@ -242,12 +259,50 @@ class searchappointments{
             try {
                 if (reader != null) {
                     reader.close();
+                    sc.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     
+    }
+
+    void searchbytype()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Appointment Type To Search : ");
+        String type = sc.nextLine();
+        String file = "appointments.csv";
+        BufferedReader reader = null;
+        String line = "";
+        try {
+            System.out.println("id        name      age       type");
+            System.out.println();
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+               
+                if (row.length >= 2 && row[3].equalsIgnoreCase(type)) { 
+                        for (String index : row) {
+                            System.out.printf("%-10s", index);
+                    }
+                    System.out.println();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Occurred: " + e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                    sc.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     }
@@ -296,6 +351,7 @@ class hospitalmanagement{
                 sa.redirect();
                 break;
             case 7:
+                sc.close();
                 System.exit(1);
             default:
                 System.out.println("Invalid Choice...");
@@ -307,9 +363,7 @@ class hospitalmanagement{
     }
     
     }
-   
-
-   
+     
 }
 
 }
