@@ -91,6 +91,36 @@ class patients{
     
     
 }
+
+class appointments{
+    void addappointment(){
+        Scanner sc= new Scanner(System.in);
+        try {
+            String file="appointments.csv";
+            FileWriter writer = new FileWriter(file, true); 
+            System.out.print("Enter Patient Id : ");
+            int id = sc.nextInt();
+            sc.nextLine(); // Consume newline character
+            System.out.print("Enter Patient Name : ");
+            String name = sc.nextLine();
+            System.out.print("Enter Patient Age : ");
+            int age = sc.nextInt();
+            sc.nextLine(); 
+            System.out.println("Enter Appointment Type: ");
+            String type=sc.nextLine();
+            sc.nextLine();
+            String str = String.format("%d,%s,%d,%s%n", id, name, age, type);
+            writer.append(str);
+    
+            System.out.println("Appointment Created Successfully");
+            writer.close(); 
+            
+        } catch (Exception e) {
+            System.out.println("Some Error Occurred : " + e);
+        }
+
+    }
+}
 class hospitalmanagement{
 
     public static void main(String[] args) {
