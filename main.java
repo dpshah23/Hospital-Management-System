@@ -65,12 +65,11 @@ class hospitalmanagement{
         while(true){
         try{
         System.out.println("1. Add New Patient Details");
-        System.out.println("2. Update Patient Details");
-        System.out.println("3. Show All Patients Details");
-        System.out.println("4. Create New Appointment");
-        System.out.println("5. See All Appointments");
-        System.out.println("6. Search Patient");
-        System.out.println("7. Exit");
+        System.out.println("2. Show All Patients Details");
+        System.out.println("3. Create New Appointment");
+        System.out.println("4. See All Appointments");
+        System.out.println("5. Search Patient");
+        System.out.println("6. Exit");
         System.out.print("Enter Your choice: ");
         int no=sc.nextInt();
 
@@ -80,18 +79,16 @@ class hospitalmanagement{
                 addpatients.addpatient();
                 break;
             case 2:
-                break;
-            case 3:
                 patients showtotal=new patients();
                 showtotal.showpatients();
+                break;
+            case 3:
                 break;
             case 4:
                 break;
             case 5:
                 break;
             case 6:
-                break;
-            case 7:
                 System.exit(1);
             default:
                 System.out.println("Invalid Choice...");
