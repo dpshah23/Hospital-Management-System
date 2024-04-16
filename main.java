@@ -150,6 +150,70 @@ class appointments{
 
     }
 }
+
+class searchappointments{
+    void redirect()
+    {   
+        Scanner sc=new Scanner(System.in);
+
+        System.out.println("Search Appointments");
+        System.out.println("1. Search By Name ");
+        System.out.println("2. Search By ID");
+        System.out.println("3. Search By Appointment Type");
+
+        int choice=sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                this.searchbyname();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Invalid Choice");
+                break;
+        }
+
+
+    }
+
+    void searchbyname()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Name To Search : ");
+        String name = sc.nextLine();
+        String file = "appointments.csv";
+        BufferedReader reader = null;
+        String line = "";
+        try {
+            System.out.println("id        name      age       mobile");
+            System.out.println();
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                if (row.length >= 2 && row[1].equalsIgnoreCase(name)) { 
+                        for (String index : row) {
+                            System.out.printf("%-10s", index);
+                    }
+                    System.out.println();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Occurred: " + e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    
+    }
+}
 class hospitalmanagement{
 
     public static void main(String[] args) {
@@ -189,6 +253,8 @@ class hospitalmanagement{
                 seach.search();
                 break;
             case 6:
+                searchappointments sa=new searchappointments();
+                sa.redirect();
                 break;
             case 7:
                 System.exit(1);
