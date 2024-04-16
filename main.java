@@ -55,6 +55,40 @@ class patients{
             System.out.println("Some Error Occurred : " + e);
         }
     }
+
+    void search() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Name To Search : ");
+        String name = sc.nextLine();
+        String file = "patients.csv";
+        BufferedReader reader = null;
+        String line = "";
+        try {
+            System.out.println("id        name      age       mobile");
+            System.out.println();
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                if (row.length >= 2 && row[1].equalsIgnoreCase(name)) { 
+                        for (String index : row) {
+                            System.out.printf("%-10s", index);
+                    }
+                    System.out.println();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Occurred: " + e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     
 }
 class hospitalmanagement{
@@ -87,6 +121,8 @@ class hospitalmanagement{
             case 4:
                 break;
             case 5:
+                patients seach=new patients();
+                seach.search();
                 break;
             case 6:
                 System.exit(1);
