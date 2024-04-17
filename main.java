@@ -308,11 +308,9 @@ class searchappointments {
 class hospitalmanagement {
 
     public static void main(String[] args) {
-        
+        Scanner sc1 = new Scanner(System.in);
         try {
-            Scanner sc1 = new Scanner(System.in);
             while (true) {
-                
                 System.out.println("<------- Welcome to Hospital Management System ------->");
                 System.out.println();
                 System.out.println("1. Add New Patient Details");
@@ -324,10 +322,9 @@ class hospitalmanagement {
                 System.out.println("7. Exit");
                 System.out.println();
                 System.out.print("Enter Your choice: ");
-                // System.out.print("");
                 int no = sc1.nextInt();
-                // sc1.nextLine();
-    
+                sc1.nextLine();
+                
                 switch (no) {
                     case 1:
                         patients addpatients = new patients();
@@ -354,18 +351,18 @@ class hospitalmanagement {
                         sa.redirect();
                         break;
                     case 7:
-                        System.exit(1);
+                        System.exit(0);
                     default:
                         System.out.println("Invalid Choice...");
                         break;
                 }
-                
-               
             }
         } catch (Exception e) {
             System.out.println("Error Occurred....!" + e);
-        } 
+        } finally {
+            sc1.close(); // Close the Scanner outside the loop
+        }
     }
     
-
-}
+    }
+    
