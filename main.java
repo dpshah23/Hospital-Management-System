@@ -318,8 +318,9 @@ class hospitalmanagement {
                 System.out.println("5. Search Patient");
                 System.out.println("6. Search Appointments");
                 System.out.println("7. Exit");
-                System.out.print("Enter Your choice: ");
                 System.out.println();
+                System.out.print("Enter Your choice: ");
+                System.out.print("");
                 int no = sc.nextInt();
 
                 switch (no) {
