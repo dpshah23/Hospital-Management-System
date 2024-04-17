@@ -169,7 +169,8 @@ class searchappointments {
             System.out.println("2. Search By ID");
             System.out.println("3. Search By Appointment Type");
             System.out.print("Enter Choice: ");
-            int choice = sc.nextInt();
+            int choice = sc.nextInt(); 
+            sc.nextLine();         
 
             switch (choice) {
                 case 1:
@@ -197,6 +198,7 @@ class searchappointments {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Name To Search : ");
         String name = sc.nextLine();
+       
         String file = "appointments.csv";
         BufferedReader reader = null;
         String line = "";
@@ -232,6 +234,7 @@ class searchappointments {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter ID To Search : ");
         String no = sc.nextLine();
+       
         String file = "appointments.csv";
         BufferedReader reader = null;
         String line = "";
@@ -305,10 +308,11 @@ class searchappointments {
 class hospitalmanagement {
 
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            try {
+        
+        try {
+            Scanner sc1 = new Scanner(System.in);
+            while (true) {
+                
                 System.out.println("<------- Welcome to Hospital Management System ------->");
                 System.out.println();
                 System.out.println("1. Add New Patient Details");
@@ -320,9 +324,10 @@ class hospitalmanagement {
                 System.out.println("7. Exit");
                 System.out.println();
                 System.out.print("Enter Your choice: ");
-                System.out.print("");
-                int no = sc.nextInt();
-
+                // System.out.print("");
+                int no = sc1.nextInt();
+                // sc1.nextLine();
+    
                 switch (no) {
                     case 1:
                         patients addpatients = new patients();
@@ -349,18 +354,18 @@ class hospitalmanagement {
                         sa.redirect();
                         break;
                     case 7:
-                        sc.close();
                         System.exit(1);
                     default:
                         System.out.println("Invalid Choice...");
                         break;
                 }
-            } catch (Exception e) {
-                System.out.println("Error Occured....!" + e);
+                
+               
             }
-
-        }
-
+        } catch (Exception e) {
+            System.out.println("Error Occurred....!" + e);
+        } 
     }
+    
 
 }
