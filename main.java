@@ -34,6 +34,7 @@ class patients{
         try {
             String file="patients.csv";
             FileWriter writer = new FileWriter(file, true); // Open in append mode
+            System.out.println();
             System.out.print("Enter Patient Id : ");
             int id = sc.nextInt();
             sc.nextLine(); // Consume newline character
@@ -315,6 +316,7 @@ class hospitalmanagement{
         Scanner sc=new Scanner(System.in);
         while(true){
         try{
+        System.err.println();
         System.out.println("1. Add New Patient Details");
         System.out.println("2. Show All Patients Details");
         System.out.println("3. Create New Appointment");
@@ -323,6 +325,7 @@ class hospitalmanagement{
         System.out.println("6. Search Appointments");
         System.out.println("7. Exit");
         System.out.print("Enter Your choice: ");
+        System.out.println();
         int no=sc.nextInt();
 
         switch (no) {
