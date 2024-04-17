@@ -1,15 +1,15 @@
 import java.util.*;
 import java.io.*;
 
-class patients{
-    void showpatients(){
-        String file="patients.csv";
-        BufferedReader reader=null;
-        String line="";
+class patients {
+    void showpatients() {
+        String file = "patients.csv";
+        BufferedReader reader = null;
+        String line = "";
         try {
-            reader=new BufferedReader(new FileReader(file));
-            while((line=reader.readLine()) !=null){
-                String[] row=line.split(",");
+            reader = new BufferedReader(new FileReader(file));
+            while((line = reader.readLine()) != null){
+                String[] row = line.split(",");
                 for (String index : row) {
                     System.out.printf("%-10s",index);
                 }
@@ -19,42 +19,46 @@ class patients{
         } catch (Exception e) {
             System.out.println("Error Occured...");
         }
-       finally{
+
+       finally {
         try {
             reader.close();
-        } catch (IOException e) {
+        } 
+        
+        catch (IOException e) {
            
             e.printStackTrace();
         }
+
        }
+
     }
 
-    void addpatient(){
-        Scanner sc= new Scanner(System.in);
+    void addpatient() {
+        Scanner sc = new Scanner(System.in);
         try {
-            String file="patients.csv";
+            String file = "patients.csv";
             FileWriter writer = new FileWriter(file, true); // Open in append mode
             System.out.println();
-            System.out.print("Enter Patient Id : ");
+            System.out.print("Enter Patient Id: ");
             int id = sc.nextInt();
             sc.nextLine(); // Consume newline character
-            System.out.print("Enter Patient Name : ");
+            System.out.print("Enter Patient Name: ");
             String name = sc.nextLine();
-            System.out.print("Enter Patient Age : ");
+            System.out.print("Enter Patient Age: ");
             int age = sc.nextInt();
             sc.nextLine(); // Consume newline character
-            System.out.print("Enter Patient Mobile Number : ");
+            System.out.print("Enter Patient Mobile Number: ");
             String mobile = sc.nextLine();
             
             String str = String.format("%d,%s,%d,%s%n", id, name, age, mobile);
             writer.append(str);
     
-            System.out.println("Data Added Successfully");
+            System.out.println("Data Added Successfully !");
             writer.close(); // Close the FileWriter
             
-        } catch (Exception e)
-         {
-            System.out.println("Some Error Occurred : " + e);
+        } catch (Exception e) {
+            System.out.println("Some Error Occurred: " + e);
         }
         finally
         {
@@ -83,7 +87,7 @@ class patients{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error Occurred: " + e);
+            System.out.println("Error Occurred ! " + e);
         } finally {
             try {
                 if (reader != null) {
@@ -101,29 +105,29 @@ class patients{
 
 class appointments{
     void addappointment(){
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         try {
-            String file="appointments.csv";
+            String file = "appointments.csv";
             FileWriter writer = new FileWriter(file, true); 
-            System.out.print("Enter Patient Id : ");
+            System.out.print("Enter Patient Id: ");
             String id = sc.nextLine();
             sc.nextLine(); // Consume newline character
-            System.out.print("Enter Patient Name : ");
+            System.out.print("Enter Patient Name: ");
             String name = sc.nextLine();
-            System.out.print("Enter Patient Age : ");
+            System.out.print("Enter Patient Age: ");
             int age = sc.nextInt();
             sc.nextLine(); 
             System.out.print("Enter Appointment Type: ");
-            String type=sc.nextLine();
+            String type = sc.nextLine();
     
             String str = String.format("%s,%s,%d,%s%n", id, name, age, type);
             writer.append(str);
     
-            System.out.println("Appointment Created Successfully");
+            System.out.println("Appointment Created Successfully !");
             writer.close(); 
             
         } catch (Exception e) {
-            System.out.println("Some Error Occurred : " + e);
+            System.out.println("Some Error Occurred: " + e);
         }
         finally{
             sc.close();
@@ -131,15 +135,15 @@ class appointments{
 
     }
 
-    void seeallappointments(){
+    void seeallappointments() {
 
-        String file="appointments.csv";
-        BufferedReader reader=null;
-        String line="";
+        String file = "appointments.csv";
+        BufferedReader reader = null;
+        String line = "";
         try {
-            reader=new BufferedReader(new FileReader(file));
-            while((line=reader.readLine()) !=null){
-                String[] row=line.split(",");
+            reader = new BufferedReader(new FileReader(file));
+            while((line = reader.readLine()) !=null){
+                String[] row = line.split(",");
                 for (String index : row) {
                     System.out.printf("%-10s",index);
                 }
@@ -147,7 +151,7 @@ class appointments{
             }
             
         } catch (Exception e) {
-            System.out.println("Error Occured...");
+            System.out.println("Error Occured...!");
         }
        finally{
         try {
@@ -164,14 +168,14 @@ class appointments{
 class searchappointments{
     void redirect()
     {   
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         try{
         System.out.println("Search Appointments");
         System.out.println("1. Search By Name ");
         System.out.println("2. Search By ID");
         System.out.println("3. Search By Appointment Type");
         System.out.print("Enter Choice: ");
-        int choice=sc.nextInt();
+        int choice = sc.nextInt();
 
         switch (choice) {
             case 1:
@@ -184,21 +188,20 @@ class searchappointments{
                 this.searchbytype();
                 break;
             default:
-                System.out.println("Invalid Choice");
+                System.out.println("Invalid Choice...!");
                 break;
         }
     }
-    catch(Exception e){
+    catch(Exception e) {
 
     }
-    finally{
+    finally {
         sc.close();
     }
 
     }
 
-    void searchbyname()
-    {
+    void searchbyname() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Name To Search : ");
         String name = sc.nextLine();
@@ -272,7 +275,7 @@ class searchappointments{
     void searchbytype()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Appointment Type To Search : ");
+        System.out.print("Enter Appointment Type To Search: ");
         String type = sc.nextLine();
         String file = "appointments.csv";
         BufferedReader reader = null;
@@ -316,7 +319,8 @@ class hospitalmanagement{
         Scanner sc=new Scanner(System.in);
         while(true){
         try{
-        System.err.println();
+        System.out.println("<------- Welcome to Hospital Management System ------->");
+        System.out.println();
         System.out.println("1. Add New Patient Details");
         System.out.println("2. Show All Patients Details");
         System.out.println("3. Create New Appointment");
@@ -330,27 +334,27 @@ class hospitalmanagement{
 
         switch (no) {
             case 1:
-                patients addpatients=new patients();
+                patients addpatients = new patients();
                 addpatients.addpatient();
                 break;
             case 2:
-                patients showtotal=new patients();
+                patients showtotal = new patients();
                 showtotal.showpatients();
                 break;
             case 3:
-                appointments addAppointments=new appointments();
+                appointments addAppointments = new appointments();
                 addAppointments.addappointment();
                 break;
             case 4:
-                appointments seeall=new appointments();
+                appointments seeall = new appointments();
                 seeall.seeallappointments();
                 break;
             case 5:
-                patients seach=new patients();
+                patients seach = new patients();
                 seach.search();
                 break;
             case 6:
-                searchappointments sa=new searchappointments();
+                searchappointments sa = new searchappointments();
                 sa.redirect();
                 break;
             case 7:
@@ -362,7 +366,7 @@ class hospitalmanagement{
         }
     }
     catch(Exception e){
-        System.out.println("Error Occured...."+e);
+        System.out.println("Error Occured....!"+e);
     }
     
     }
