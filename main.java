@@ -310,7 +310,9 @@ class hospitalmanagement {
     public static void main(String[] args) {
         Scanner sc1 = new Scanner(System.in);
         try {
-            while (true) {
+            int i=0;
+           
+            while (i<1000) {
                 System.out.println("<------- Welcome to Hospital Management System ------->");
                 System.out.println();
                 System.out.println("1. Add New Patient Details");
@@ -323,7 +325,6 @@ class hospitalmanagement {
                 System.out.println();
                 System.out.print("Enter Your choice: ");
                 int no = sc1.nextInt();
-                sc1.nextLine();
                 
                 switch (no) {
                     case 1:
@@ -365,4 +366,5 @@ class hospitalmanagement {
     }
     
     }
-    
+
+   
