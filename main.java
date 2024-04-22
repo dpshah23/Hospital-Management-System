@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class patients 
+class patients {
     void showpatients() {
         String file = "patients.csv";
         BufferedReader reader = null;
