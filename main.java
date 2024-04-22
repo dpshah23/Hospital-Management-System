@@ -325,6 +325,7 @@ class hospitalmanagement {
                 System.out.println();
                 System.out.print("Enter Your choice: ");
                 int no = sc1.nextInt();
+                sc1.nextLine();
                 
                 switch (no) {
                     case 1:
