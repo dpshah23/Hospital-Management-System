@@ -38,16 +38,16 @@ class patients {
         Scanner sc = new Scanner(System.in);
         try {
             String file = "patients.csv";
-            FileWriter writer = new FileWriter(file, true); // Open in append mode
+            FileWriter writer = new FileWriter(file, true); 
             System.out.println();
             System.out.print("Enter Patient Id: ");
             int id = sc.nextInt();
-            sc.nextLine(); // Consume newline character
+            sc.nextLine();
             System.out.print("Enter Patient Name: ");
             String name = sc.nextLine();
             System.out.print("Enter Patient Age: ");
             int age = sc.nextInt();
-            sc.nextLine(); // Consume newline character
+            sc.nextLine(); 
             System.out.print("Enter Patient Mobile Number: ");
             String mobile = sc.nextLine();
 
@@ -55,7 +55,7 @@ class patients {
             writer.append(str);
 
             System.out.println("Data Added Successfully !");
-            writer.close(); // Close the FileWriter
+            writer.close(); 
 
         } catch (Exception e) {
             System.out.println("Some Error Occurred: " + e);
@@ -108,7 +108,7 @@ class appointments {
             FileWriter writer = new FileWriter(file, true);
             System.out.print("Enter Patient Id: ");
             String id = sc.nextLine();
-            sc.nextLine(); // Consume newline character
+            sc.nextLine(); 
             System.out.print("Enter Patient Name: ");
             String name = sc.nextLine();
             System.out.print("Enter Patient Age: ");
