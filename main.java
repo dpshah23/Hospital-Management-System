@@ -362,7 +362,7 @@ class hospitalmanagement {
         } catch (Exception e) {
             System.out.println("Error Occurred....!" + e);
         } finally {
-            sc1.close(); // Close the Scanner outside the loop
+            sc1.close(); 
         }
     }
     
